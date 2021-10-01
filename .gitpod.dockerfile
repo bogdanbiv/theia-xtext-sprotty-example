@@ -10,9 +10,11 @@ RUN apt-get update \
 USER gitpod
 # Apply user-specific settings
 RUN bash -c ". .nvm/nvm.sh \
-    && nvm install 10 \
-    && nvm use 10 \
+    && nvm install 14.18.0 \
+    && nvm use 14.18.0 \
     && npm install -g yarn"
+
+RUN echo "nvm use default &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
 
 # Give back control
 USER root
